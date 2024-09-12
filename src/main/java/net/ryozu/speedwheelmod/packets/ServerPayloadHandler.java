@@ -26,9 +26,9 @@ public class ServerPayloadHandler<T extends CustomPacketPayload> implements IPay
         //Calculate new speed
         int newSpeed;
         if (data.up()) {
-            newSpeed = PlayerSpeedMod.speedUp(currentSpeed);
+            newSpeed = PlayerSpeedMod.speedUp(currentSpeed, data.step());
         } else {
-            newSpeed = PlayerSpeedMod.speedDown(currentSpeed);
+            newSpeed = PlayerSpeedMod.speedDown(currentSpeed, data.step());
         }
         if (newSpeed != currentSpeed) {
 

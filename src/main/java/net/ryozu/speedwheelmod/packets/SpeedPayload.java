@@ -9,13 +9,15 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.ryozu.speedwheelmod.SpeedWheelMod;
 import org.jetbrains.annotations.NotNull;
 
-public record SpeedPayload(boolean up) implements CustomPacketPayload {
+public record SpeedPayload(boolean up, int step) implements CustomPacketPayload {
     public static final Type<SpeedPayload> TYPE =
             new Type<>(ResourceLocation.fromNamespaceAndPath(SpeedWheelMod.MODID, "speedpayload"));
 
     public static final StreamCodec<ByteBuf, SpeedPayload> STREAM_CODEC = StreamCodec.composite(
             ByteBufCodecs.BOOL,
             SpeedPayload::up,
+            ByteBufCodecs.INT,
+            SpeedPayload::step,
             SpeedPayload::new
     );
 

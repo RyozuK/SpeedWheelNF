@@ -2,5 +2,9 @@
   "key.categories.speedwheelmod": "Speed Wheel",
   "key.speedwheelmod.speed_modifier_key": "Modifier Key",
   "key.speedwheelmod.speed_up_key":  "Speed up",
-  "key.speedwheelmod.speed_down_key": "Speed Down"
+  "key.speedwheelmod.speed_down_key": "Speed Down",
+  "speedwheelmod.configuration.speedMax": "Maximum Speed Percent",
+  "speedwheelmod.configuration.speedMin": "Minimum Speed Percent",
+  "speedwheelmod.configuration.speedStep": "Speed Adjustment per click",
+  "speedwheelmod.configuration.needsModKey": "Modifier Key for keyboard?"
 }

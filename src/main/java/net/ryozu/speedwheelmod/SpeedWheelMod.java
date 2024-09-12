@@ -1,8 +1,10 @@
 package net.ryozu.speedwheelmod;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.resources.ResourceLocation;
+import net.neoforged.neoforge.client.gui.ConfigurationScreen;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.neoforge.attachment.AttachmentType;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.slf4j.Logger;
@@ -40,8 +42,15 @@ public class SpeedWheelMod {
         // Register ourselves for server and other game events we are interested in
         ATTACHMENT_TYPES.register(modEventBus);
 
-        // Register the mod's ForgeConfigSpec so that Forge can create and load the config file for us
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        modContainer.registerConfig(ModConfig.Type.SERVER, Config.SERVER_SPEC);
+        modContainer.registerConfig(ModConfig.Type.CLIENT, Config.CLIENT_SPEC);
+    }
+
+    @Mod(value = SpeedWheelMod.MODID, dist = Dist.CLIENT)
+    public static class ConfigScreenRegistrar {
+        public ConfigScreenRegistrar(ModContainer container, IEventBus modEventBus) {
+            container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+        }
     }
 
 }

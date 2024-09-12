@@ -18,13 +18,13 @@ public class PlayerSpeedMod {
         return ((double) percent / 100) - 1.0;
     }
 
-    public static int speedUp(int speed) {
-        speed = (int)bound(speed + Config.speedStep, Config.speedMin, Config.speedMax);
+    public static int speedUp(int speed, int step) {
+        speed = (int)bound(speed + step, Config.SERVER.speedMin(), Config.SERVER.speedMax());
         return speed;
     }
 
-    public static int speedDown(int speed) {
-        speed = (int)bound(speed - Config.speedStep, Config.speedMin, Config.speedMax);
+    public static int speedDown(int speed, int step) {
+        speed = (int)bound(speed - step, Config.SERVER.speedMin(), Config.SERVER.speedMax());
         return speed;
     }
 }
